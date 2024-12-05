@@ -1,6 +1,7 @@
+
 import {Item} from "../gilded-rose";
 
-class Backstage_Pass extends Item {
+export class Backstage_Pass extends Item {
     public NewValues(): void {
         this.OnlyUpdateSellIn();
         if (this.sellIn <= 10) {

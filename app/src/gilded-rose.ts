@@ -1,4 +1,9 @@
 //import { Item } from "./Item/ItemPropierties";
+import { Aged_Brie } from "./Item/Aged_Brie";
+import { Backstage_Pass } from "./Item/Backstage_Pass";
+import { Sulfuras } from "./Item/Sulfuras";
+import { Conjured } from "./Item/Conjured";
+
 export class Item {
   name: string;
   sellIn: number;
@@ -17,11 +22,16 @@ export class Item {
   public UpdateQuality(): void {
 
     if (this.sellIn == 0) { // Quality decreases twice as fast when sellIn value is 0
-      this.quality = this.quality - 2;
+      if (this.quality == 0) {
+        this.quality = 0;
+      }
+      else {
+        this.quality = this.quality - 2;
+      }
     }
     else {
-      this.sellIn = this.sellIn--; // Each day, sellIn value decreaces 
-      this.quality = this.quality--; // Each day, quality decreaces | QUALITY CAN'T BE NEGATIVE 
+       this.sellIn--; // Each day, sellIn value decreaces 
+      this.quality--; // Each day, quality decreaces | QUALITY CAN'T BE NEGATIVE 
     }
   }
 
@@ -30,12 +40,12 @@ export class Item {
       this.quality = this.quality += 0;
     }
     else {
-      this.quality = this.quality++;
+      this.quality++;
     } 
   }
 
   public OnlyUpdateSellIn(): void {
-    this.sellIn = this.sellIn--;
+    this.sellIn--;
   }
 }
 
@@ -47,52 +57,12 @@ export class GildedRose {
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-        if (this.items[i].quality > 0) {
-          if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-            this.items[i].quality = this.items[i].quality - 1
-          }
-        }
-      } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1
-          if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
-            }
-          }
-        }
-      }
-      if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-        this.items[i].sellIn = this.items[i].sellIn - 1;
-      }
-      if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != 'Aged Brie') {
-          if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].quality > 0) {
-              if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].quality = this.items[i].quality - 1
-              }
-            }
-          } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality
-          }
-        } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
-          }
-        }
-      }
+    let i: number;
+    for (i = 0;i<this.items.length;i++){
+       let CurrentItem = this.items[i];
+       CurrentItem.UpdateValues();
     }
-
     return this.items;
   }
+    
 }
