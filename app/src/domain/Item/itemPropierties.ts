@@ -8,6 +8,10 @@ export class Item {
       this.sellIn = sellIn;
       this.quality = quality;
     }
+
+    public NewValues(){
+      this.UpdateQuality(); //Items genéricos
+    }
     
     public UpdateQuality(): void {
       if (this.sellIn <= 0) { // Quality decreases twice as fast when sellIn value is 0

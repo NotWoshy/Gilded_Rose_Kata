@@ -1,9 +1,9 @@
 import {GildedRose} from '../app/src/gilded-rose';
-import {Item} from "@/src/Item/itemPropierties";
-import {Aged_Brie} from "@/src/Item/agedBrie"
-import { Sulfuras } from '@/src/Item/sulfuras';
-import { Backstage_Pass } from '@/src/Item/backstagePass';
-import { Conjured } from '@/src/Item/conjured';
+import {Item} from "@/src/domain/Item/itemPropierties";
+import {Aged_Brie} from "@/src/domain/Item/agedBrie"
+import { Sulfuras } from '@/src/domain/Item/sulfuras';
+import { Backstage_Pass } from '@/src/domain/Item/backstagePass';
+import { Conjured } from '@/src/domain/Item/conjured';
 
 
 console.log("OMGHAI!")

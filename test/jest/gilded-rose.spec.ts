@@ -1,5 +1,5 @@
 import { GildedRose} from '@/src/gilded-rose';
-import {Item} from "@/src/Item/itemPropierties"
+import {Item} from "@/src/domain/Item/itemPropierties"
 
 describe('Gilded Rose', () => {
   it('should foo', () => {
