@@ -1,4 +1,4 @@
-import {Item} from "../gilded-rose";
+import {Item} from "./itemPropierties";
 
 export class Aged_Brie extends Item {
     public NewValues(): void {

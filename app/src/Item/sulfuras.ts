@@ -1,7 +1,7 @@
-import {Item} from "../gilded-rose";
+import {Item} from "./itemPropierties";
 
 export class Sulfuras extends Item {
-   public newValues(): void{
+   public NewValues(): void{
     this.sellIn = this.sellIn;
    } 
 }

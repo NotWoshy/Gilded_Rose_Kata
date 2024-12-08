@@ -1,53 +1,8 @@
-//import { Item } from "./Item/ItemPropierties";
-import { Aged_Brie } from "./Item/Aged_Brie";
-import { Backstage_Pass } from "./Item/Backstage_Pass";
-import { Sulfuras } from "./Item/Sulfuras";
-import { Conjured } from "./Item/Conjured";
-
-export class Item {
-  name: string;
-  sellIn: number;
-  quality: number;
-
-  constructor(name: string , sellIn : number, quality: number) {
-    this.name = name;
-    this.sellIn = sellIn;
-    this.quality = quality;
-  }
-
-  public UpdateValues(): void {
-    this.UpdateQuality();
-  }
-  
-  public UpdateQuality(): void {
-
-    if (this.sellIn == 0) { // Quality decreases twice as fast when sellIn value is 0
-      if (this.quality == 0) {
-        this.quality = 0;
-      }
-      else {
-        this.quality = this.quality - 2;
-      }
-    }
-    else {
-       this.sellIn--; // Each day, sellIn value decreaces 
-      this.quality--; // Each day, quality decreaces | QUALITY CAN'T BE NEGATIVE 
-    }
-  }
-
-  public QualityUpgrade(): void { //For Aged Brie
-    if (this.quality == 50) { // Max quality
-      this.quality = this.quality += 0;
-    }
-    else {
-      this.quality++;
-    } 
-  }
-
-  public OnlyUpdateSellIn(): void {
-    this.sellIn--;
-  }
-}
+import { Aged_Brie } from "./Item/agedBrie";
+import {Item} from "./Item/itemPropierties";
+import { Sulfuras } from './Item/sulfuras';
+import { Backstage_Pass } from './Item/backstagePass';
+import { Conjured } from './Item/conjured';
 
 export class GildedRose {
   items: Array<Item>;
@@ -58,11 +13,24 @@ export class GildedRose {
 
   updateQuality() {
     let i: number;
-    for (i = 0;i<this.items.length;i++){
+    for (i = 0;i<this.items.length;i++) {
        let CurrentItem = this.items[i];
-       CurrentItem.UpdateValues();
+       if (CurrentItem instanceof Aged_Brie) {
+        CurrentItem.NewValues();
+       }
+       else if (CurrentItem instanceof Backstage_Pass) {
+        CurrentItem.NewValues();
+       }
+       else if (CurrentItem instanceof Sulfuras) {
+        CurrentItem.NewValues();
+       }
+       else if (CurrentItem instanceof Conjured) {
+        CurrentItem.NewValues();
+       }
+       else if (CurrentItem instanceof Item) {
+        CurrentItem.UpdateQuality();
+       }
     }
     return this.items;
-  }
-    
-}
+    }  
+  } 
