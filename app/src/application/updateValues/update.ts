@@ -1,7 +1,8 @@
 import { Item } from "@/src/domain/Item/itemPropierties";
 
-export class update {
-    public updateValues(item:Item) {
+export class update extends Item {
+    
+    public static updateValues (item:Item): void {
         item.NewValues();
     }
 }
